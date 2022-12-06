@@ -3,6 +3,24 @@ local CL = {Tables = {}}
 
 --- By Roge#4087
 
+CSTM.Tables["GetChildrenNames"] = function(instance)
+    local names = {}
+    for i,v in ipairs(instance:GetChildren()) do
+        if not table.find(names, v.Name) then
+            table.insert(names, v.Name)
+        end
+    end
+    return names
+end
+
+CSTM.Tables["GetChildrenUniqueNames"] = function(instance)
+    local names = {}
+    for i,v in ipairs(instance:GetChildren()) do
+        table.insert(names, v.Name)
+    end
+    return names
+end
+
 CL.Tables["GetTableLength"] = function(table)
     local total = 0
     for i,v in pairs(dictionary) do
