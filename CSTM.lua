@@ -1,27 +1,9 @@
-local CSTM = {Tables = {}}
+local CL = {Tables = {}}
 
 
 --- By Roge#4087
 
-CSTM.Tables["GetChildrenNames"] = function(instance)
-    local names = {}
-    for i,v in ipairs(instance:GetChildren()) do
-        if not table.find(names, v.Name) then
-            table.insert(names, v.Name)
-        end
-    end
-    return names
-end
-
-CSTM.Tables["GetChildrenUniqueNames"] = function(instance)
-    local names = {}
-    for i,v in ipairs(instance:GetChildren()) do
-        table.insert(names, v.Name)
-    end
-    return names
-end
-
-CSTM.Tables["GetDictionaryLength"] = function(dictionary)
+CL.Tables["GetTableLength"] = function(table)
     local total = 0
     for i,v in pairs(dictionary) do
         total = total + 1
@@ -29,7 +11,7 @@ CSTM.Tables["GetDictionaryLength"] = function(dictionary)
     return total
 end
 
-CSTM.Tables["GetDictionaryValues"] = function(dictionary)
+CL.Tables["GetTableValues"] = function(table)
     local names = {[1] = {},[2] = {}}
     for i,v in pairs(dictionary) do
         table.insert(names[1], i)
@@ -38,7 +20,7 @@ CSTM.Tables["GetDictionaryValues"] = function(dictionary)
     return names
 end
 
-CSTM.Tables["GetDictionaryUniqueValues"] = function(dictionary)
+CL.Tables["GetTableUniqueValues"] = function(table)
     local names = {[1] = {},[2] = {}}
     for i,v in pairs(dictionary) do
         if not table.find(names[1], i) then
@@ -51,4 +33,4 @@ CSTM.Tables["GetDictionaryUniqueValues"] = function(dictionary)
     return names
 end
 
-return CSTM
+return CL
