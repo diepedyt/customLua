@@ -3,7 +3,7 @@ local CL = {Tables = {}}
 
 --- By Roge#4087
 
-CSTM.Tables["GetChildrenNames"] = function(instance)
+CL.Tables["GetChildrenUniqueNames"] = function(instance)
     local names = {}
     for i,v in ipairs(instance:GetChildren()) do
         if not table.find(names, v.Name) then
@@ -13,7 +13,7 @@ CSTM.Tables["GetChildrenNames"] = function(instance)
     return names
 end
 
-CSTM.Tables["GetChildrenUniqueNames"] = function(instance)
+CL.Tables["GetChildrenNames"] = function(instance)
     local names = {}
     for i,v in ipairs(instance:GetChildren()) do
         table.insert(names, v.Name)
