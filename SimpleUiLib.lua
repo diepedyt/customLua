@@ -139,7 +139,7 @@ ui.CreateKeySystem = function(key, discord)
 		TextLabel.Position = UDim2.new(0.0760451257, 0, 0.0860215053, 0)
 		TextLabel.Size = UDim2.new(0.849840283, 0, 0.408602148, 0)
 		TextLabel.Font = Enum.Font.SourceSans
-		TextLabel.Text = "Key Discord: discord.gg/A33fT0as"
+		TextLabel.Text = "Key Discord: "..discord
 		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
 		TextLabel.TextScaled = true
 		TextLabel.TextSize = 35.000
@@ -164,7 +164,7 @@ ui.CreateKeySystem = function(key, discord)
 		
 		TextButton.MouseButton1Click:Connect(function()
 			if setclipboard then
-				setclipboard(TextLabel.Text)
+				setclipboard("https://"..discord)
 			end
 		end)
 		
