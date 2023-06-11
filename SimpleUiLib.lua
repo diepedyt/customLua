@@ -16,7 +16,7 @@ function protectGui(GUI)
 end
 
 
-ui.CreateKeySystem = function(key)
+ui.CreateKeySystem = function(key, discord)
 	local KeyLogin = Instance.new("ScreenGui")
 	local Main = Instance.new("Frame")
 	local ImageUiCorner = Instance.new("UICorner")
@@ -109,6 +109,66 @@ ui.CreateKeySystem = function(key)
 	TextButton.MouseButton1Click:Connect(function()
 		Input = TextBox.Text
 	end)
+	
+	if discord then
+		task.wait(.35)
+		print("Alright")
+		ts:Create(TextBox, TweenInfo.new(.35, Enum.EasingStyle.Quint), {Position = UDim2.new(0.226, 0,0.25, 0)}):Play()
+		task.wait(.1)
+		ts:Create(TextButton, TweenInfo.new(.35, Enum.EasingStyle.Quint), {Position = UDim2.new(0.258, 0,0.45, 0)}):Play()
+		
+		local Discord = Instance.new("Frame")
+		local UICorner = Instance.new("UICorner")
+		local TextLabel = Instance.new("TextLabel")
+		local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+		local TextButton = Instance.new("TextButton")
+		local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
+
+		--Properties:
+
+		Discord.Name = "Discord"
+		Discord.Parent = KeyUI
+		Discord.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Discord.Position = UDim2.new(0.0447725654, 0, 0.63684541, 0)
+		Discord.Size = UDim2.new(0.934254229, 0, 0.264404565, 0)
+
+		UICorner.Parent = Discord
+
+		TextLabel.Parent = Discord
+		TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextLabel.Position = UDim2.new(0.0760451257, 0, 0.0860215053, 0)
+		TextLabel.Size = UDim2.new(0.849840283, 0, 0.408602148, 0)
+		TextLabel.Font = Enum.Font.SourceSans
+		TextLabel.Text = "Key Discord: discord.gg/A33fT0as"
+		TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextLabel.TextScaled = true
+		TextLabel.TextSize = 35.000
+		TextLabel.TextWrapped = true
+
+		UITextSizeConstraint.Parent = TextLabel
+		UITextSizeConstraint.MaxTextSize = 35
+
+		TextButton.Parent = Discord
+		TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		TextButton.Position = UDim2.new(0.2441414, 0, 0.580645144, 0)
+		TextButton.Size = UDim2.new(0.50834924, 0, 0.365591407, 0)
+		TextButton.Font = Enum.Font.SourceSans
+		TextButton.Text = "Copy"
+		TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+		TextButton.TextScaled = true
+		TextButton.TextSize = 29.000
+		TextButton.TextWrapped = true
+
+		UITextSizeConstraint_2.Parent = TextButton
+		UITextSizeConstraint_2.MaxTextSize = 29
+		
+		TextButton.MouseButton1Click:Connect(function()
+			if setclipboard then
+				setclipboard(TextLabel.Text)
+			end
+		end)
+		
+	end
 	
 	repeat task.wait() until Input
 	
