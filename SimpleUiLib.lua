@@ -16,7 +16,7 @@ function protectGui(GUI)
 end
 
 
-ui.CreateKeySystem = function(discord, theme, title)
+ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 	
 	if not theme then
 		theme = {
@@ -121,6 +121,7 @@ ui.CreateKeySystem = function(discord, theme, title)
 
 	TextButton.MouseButton1Click:Connect(function()
 		Input = TextBox.Text
+		_G[keyVar] = TextBox.Text
 	end)
 
 	if discord then
@@ -212,8 +213,9 @@ ui.CreateKeySystem = function(discord, theme, title)
 		UITextSizeConstraint.MaxTextSize = 32
 	end
 
-	repeat task.wait() until Input
+	repeat task.wait() until _G[destroyVar]
 
+	
 	ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0.95, 0)}):Play()
 	task.wait(.25)
 	ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1}):Play()
@@ -225,7 +227,7 @@ ui.CreateKeySystem = function(discord, theme, title)
 		KeyLogin:Destroy()
 	end)
 	
-	return Input:gsub(" ","")
+	return --Input:gsub(" ","")
 
 end
 
