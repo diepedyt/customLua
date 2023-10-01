@@ -213,18 +213,20 @@ ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 		UITextSizeConstraint.MaxTextSize = 32
 	end
 
-	repeat task.wait() until _G[destroyVar]
-
+	task.spawn(function()
+		repeat task.wait() until _G[destroyVar]
 	
-	ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0.95, 0)}):Play()
-	task.wait(.25)
-	ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1}):Play()
-	task.wait(.15)
-	ts:Create(Main, TweenInfo.new(.45, Enum.EasingStyle.Quint), {Size = UDim2.new(0.27, 0, 0, 0), BackgroundTransparency = 1}):Play()
-	task.wait(.45)
-	
-	pcall(function()
-		KeyLogin:Destroy()
+		
+		ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0.95, 0)}):Play()
+		task.wait(.25)
+		ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0, 0), BackgroundTransparency = 1}):Play()
+		task.wait(.15)
+		ts:Create(Main, TweenInfo.new(.45, Enum.EasingStyle.Quint), {Size = UDim2.new(0.27, 0, 0, 0), BackgroundTransparency = 1}):Play()
+		task.wait(.45)
+		
+		pcall(function()
+			KeyLogin:Destroy()
+		end)
 	end)
 	
 	return --Input:gsub(" ","")
