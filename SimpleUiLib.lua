@@ -3,15 +3,31 @@ local ui = {}
 local ts = game:GetService("TweenService")
 
 function protectGui(GUI)
+    local completed = false
     if syn and syn.protect_gui then
-        syn.protect_gui(GUI)
-        GUI.Parent = game:GetService("CoreGui")
+        pcall(function()
+            syn.protect_gui(GUI)
+            GUI.Parent = game:GetService("CoreGui")
+            completed = true
+        end)
     elseif gethui then
-        GUI.Parent = gethui()
+        pcall(function()
+            GUI.Parent = gethui()
+            completed = true
+        end)
     elseif game.CoreGui:FindFirstChild("RobloxGui") then
-        GUI.Parent = game.CoreGui.RobloxGui
+        pcall(function()
+            GUI.Parent = game.CoreGui.RobloxGui
+            completed = true
+        end)
     else
-        GUI.Parent = game:GetService("CoreGui")
+        pcall(function()
+            GUI.Parent = game:GetService("CoreGui")
+            completed = true
+        end)
+    end
+    if not completed then
+        GUI.Parent = game.Players.LocalPlayer.PlayerGui
     end
 end
 
