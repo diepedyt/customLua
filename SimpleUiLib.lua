@@ -16,7 +16,7 @@ function protectGui(GUI)
 end
 
 
-ui.CreateKeySystem = function(key, discord, theme, title)
+ui.CreateKeySystem = function(discord, theme, title)
 	
 	if not theme then
 		theme = {
@@ -225,7 +225,7 @@ ui.CreateKeySystem = function(key, discord, theme, title)
 		KeyLogin:Destroy()
 	end)
 	
-	return Input:lower():gsub(" ","") == key:lower()
+	return Input:gsub(" ","")
 
 end
 
