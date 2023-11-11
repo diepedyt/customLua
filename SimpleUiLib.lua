@@ -33,6 +33,15 @@ end
 
 
 ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
+
+	--
+	local Blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+	Blur.Size = 0
+	
+	ts:Create(Blur, TweenInfo.new(.4, Enum.EasingStyle.Quint), {Size = 24}):Play()
+	local oldFov = game:GetService("Workspace").Camera.FieldOfView
+	ts:Create(game:GetService("Workspace").Camera, TweenInfo.new(.4, Enum.EasingStyle.Quint), {FieldOfView = oldFov - 20}):Play()
+	--
 	
 	if not theme then
 		theme = {
@@ -231,6 +240,10 @@ ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 
 	task.spawn(function()
 		repeat task.wait() until _G[destroyVar]
+
+		ts:Create(Blur, TweenInfo.new(1, Enum.EasingStyle.Cubic), {Size = 0}):Play()
+		ts:Create(game:GetService("Workspace").Camera, TweenInfo.new(1, Enum.EasingStyle.Cubic), {FieldOfView = oldFov}):Play()
+		Blur:Destroy()
 	
 		
 		ts:Create(KeyUI, TweenInfo.new(.25, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 0, 0.95, 0)}):Play()
