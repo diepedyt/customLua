@@ -152,13 +152,9 @@ ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 	if discord then
 		local copyLink = discord
 		if type(discord) ~= "string" then
-			discord = discord.displayLink
 			copyLink = discord.realLink
+			discord = discord.displayLink
 		end
-		for i,v in pairs(discord) do
-			warn(i,v)
-		end
-		print(copyLink)
 		task.wait(.35)
 		task.delay(.1, function()
 			ts:Create(TextBox, TweenInfo.new(.35, Enum.EasingStyle.Quint), {Position = UDim2.new(0.226, 0,0.178, 0)}):Play()
