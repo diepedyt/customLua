@@ -1,5 +1,6 @@
 local ui = {}
 
+warn("cam")
 
 local ts = game:GetService("TweenService")
 
