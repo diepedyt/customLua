@@ -1,5 +1,6 @@
 local ui = {}
 
+
 local ts = game:GetService("TweenService")
 
 function protectGui(GUI)
