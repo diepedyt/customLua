@@ -150,6 +150,11 @@ ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 	end)
 
 	if discord then
+		local copyLink = discord
+		if type(discord) ~= "string" then
+			discord = discord.displayLink
+			copyLink = discord.realLink
+		end
 		task.wait(.35)
 		task.delay(.1, function()
 			ts:Create(TextBox, TweenInfo.new(.35, Enum.EasingStyle.Quint), {Position = UDim2.new(0.226, 0,0.178, 0)}):Play()
@@ -204,7 +209,7 @@ ui.CreateKeySystem = function(discord, theme, title, keyVar, destroyVar)
 
 		TextButton.MouseButton1Click:Connect(function()
 			if setclipboard then
-				setclipboard("https://"..discord)
+				setclipboard("https://"..copyLink)
 			end
 		end)
 
