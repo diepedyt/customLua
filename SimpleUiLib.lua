@@ -337,4 +337,117 @@ ui.CreateButton = function(parent, name, callback)
 	
 end
 
+ui.CreateBHUBPAID = function()
+	
+	--
+	local Blur = Instance.new("BlurEffect", game:GetService("Lighting"))
+	Blur.Size = 0
+
+	ts:Create(Blur, TweenInfo.new(.4, Enum.EasingStyle.Quint), {Size = 24}):Play()
+	local oldFov = game:GetService("Workspace").Camera.FieldOfView
+	ts:Create(game:GetService("Workspace").Camera, TweenInfo.new(.4, Enum.EasingStyle.Quint), {FieldOfView = oldFov - 20}):Play()
+	--
+	
+	
+	local BuyKey = Instance.new("ScreenGui")
+	local Frame = Instance.new("Frame")
+	local BH = Instance.new("TextLabel")
+	local Paid = Instance.new("TextLabel")
+	local Disc = Instance.new("TextLabel")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	local Close = Instance.new("TextButton")
+	local UICorner = Instance.new("UICorner")
+
+	--Properties:
+
+	BuyKey.Name = "BuyKey"
+	protectGui(BuyKey)
+	BuyKey.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+	Frame.Parent = BuyKey
+	Frame.BackgroundColor3 = Color3.fromRGB(255, 246, 120)
+	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BorderSizePixel = 10
+	Frame.Position = UDim2.new(0.256250501, 0, 0.267831147, 0)
+	Frame.Size = UDim2.new(0.573979616, 0, 0.464337707, 0)
+
+	BH.Name = "BH"
+	BH.Parent = Frame
+	BH.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BH.BackgroundTransparency = 1.000
+	BH.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	BH.BorderSizePixel = 0
+	BH.Position = UDim2.new(0, 0, 0.0891657174, 0)
+	BH.Size = UDim2.new(1, 0, 0.284391195, 0)
+	BH.Font = Enum.Font.SourceSans
+	BH.Text = "Banana Hub ACS is now Paid!"
+	BH.TextColor3 = Color3.fromRGB(0, 0, 0)
+	BH.TextScaled = true
+	BH.TextSize = 49.000
+	BH.TextWrapped = true
+
+	Paid.Name = "Paid"
+	Paid.Parent = Frame
+	Paid.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Paid.BackgroundTransparency = 1.000
+	Paid.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Paid.BorderSizePixel = 0
+	Paid.Position = UDim2.new(0.0785185173, 0, 0.37044093, 0)
+	Paid.Size = UDim2.new(0.841481507, 0, 0.144181877, 0)
+	Paid.Font = Enum.Font.SourceSans
+	Paid.Text = "A key is only 7$"
+	Paid.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Paid.TextScaled = true
+	Paid.TextSize = 49.000
+	Paid.TextWrapped = true
+
+	Disc.Name = "Disc"
+	Disc.Parent = Frame
+	Disc.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Disc.BackgroundTransparency = 1.000
+	Disc.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Disc.BorderSizePixel = 0
+	Disc.Position = UDim2.new(0.106666729, 0, 0.568717241, 0)
+	Disc.Size = UDim2.new(0.783703685, 0, 0.285669029, 0)
+	Disc.Font = Enum.Font.SourceSansBold
+	Disc.Text = "get it now at: discord.gg/BananaHub"
+	Disc.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Disc.TextScaled = true
+	Disc.TextSize = 49.000
+	Disc.TextWrapped = true
+
+	UIAspectRatioConstraint.Parent = Frame
+	UIAspectRatioConstraint.AspectRatio = 2.116
+
+	Close.Name = "Close"
+	Close.Parent = Frame
+	Close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+	Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Close.BorderSizePixel = 0
+	Close.Position = UDim2.new(0.952414811, 0, -0.0819226801, 0)
+	Close.Size = UDim2.new(0.077432096, 0, 0.170399174, 0)
+	Close.Visible = false
+	Close.Font = Enum.Font.SourceSans
+	Close.Text = "X"
+	Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+	Close.TextScaled = true
+	Close.TextSize = 14.000
+	Close.TextWrapped = true
+
+	UICorner.Parent = Close
+	
+	task.delay(5, function()
+		Close.MouseButton1Click:Connect(function()
+			BuyKey:Destroy()
+			
+			ts:Create(Blur, TweenInfo.new(1, Enum.EasingStyle.Cubic), {Size = 0}):Play()
+			ts:Create(game:GetService("Workspace").Camera, TweenInfo.new(.3, Enum.EasingStyle.Cubic), {FieldOfView = oldFov}):Play()
+			Blur:Destroy()
+			
+		end)
+		Close.Visible = true
+	end)
+	
+end
+
 return ui
