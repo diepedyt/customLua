@@ -337,7 +337,7 @@ ui.CreateButton = function(parent, name, callback)
 	
 end
 
-ui.CreateBHUBPAID = function()
+ui.CreateBHUBPAID = function(override)
 	
 	--
 	local Blur = Instance.new("BlurEffect", game:GetService("Lighting"))
@@ -371,6 +371,12 @@ ui.CreateBHUBPAID = function()
 	Frame.Position = UDim2.new(0.256250501, 0, 0.267831147, 0)
 	Frame.Size = UDim2.new(0.573979616, 0, 0.464337707, 0)
 
+	local text = "Banana Hub ACS is now Paid!"
+
+	if override then
+		text = "Banana Hub "..tostring(override).." is now Paid!"
+	end
+	
 	BH.Name = "BH"
 	BH.Parent = Frame
 	BH.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -380,7 +386,7 @@ ui.CreateBHUBPAID = function()
 	BH.Position = UDim2.new(0, 0, 0.0891657174, 0)
 	BH.Size = UDim2.new(1, 0, 0.284391195, 0)
 	BH.Font = Enum.Font.SourceSans
-	BH.Text = "Banana Hub ACS is now Paid!"
+	BH.Text = text
 	BH.TextColor3 = Color3.fromRGB(0, 0, 0)
 	BH.TextScaled = true
 	BH.TextSize = 49.000
