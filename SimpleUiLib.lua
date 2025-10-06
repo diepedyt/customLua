@@ -337,7 +337,7 @@ ui.CreateButton = function(parent, name, callback)
 	
 end
 
-ui.CreateBHUBPAID = function(override)
+ui.CreateBHUBPAID = function(override, customText)
 	
 	--
 	local Blur = Instance.new("BlurEffect", game:GetService("Lighting"))
@@ -375,6 +375,10 @@ ui.CreateBHUBPAID = function(override)
 
 	if override then
 		text = "Banana Hub "..tostring(override).." is now Paid!"
+	end
+
+	if customText then
+		text = customText
 	end
 	
 	BH.Name = "BH"
